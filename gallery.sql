@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Янв 12 2022 г., 20:37
+-- Время создания: Янв 17 2022 г., 20:05
 -- Версия сервера: 5.7.29
 -- Версия PHP: 7.4.5
 
@@ -86,6 +86,26 @@ INSERT INTO `catalog` (`id`, `title`, `price`, `description`) VALUES
 (10, 'Британцы в шапочках', 58, 'Два британских котика в смешных шапочках сидят на диване с очень важным видом'),
 (11, 'Толстый белый', 42, 'Толстый белый котик, в шапочке, как корона 18 века, сидит враскоряку'),
 (12, 'Двое на подоконнике', 82, 'Серый и рыжий котики летним днем наблюдают за чем-то с подоконника');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `categories`
+--
+
+CREATE TABLE `categories` (
+  `id_category` int(11) NOT NULL,
+  `status` int(11) NOT NULL,
+  `name` varchar(512) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `parent_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Дамп данных таблицы `categories`
+--
+
+INSERT INTO `categories` (`id_category`, `status`, `name`, `parent_id`) VALUES
+(1, 1, 'Котики', 0);
 
 -- --------------------------------------------------------
 
@@ -253,6 +273,12 @@ ALTER TABLE `catalog`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Индексы таблицы `categories`
+--
+ALTER TABLE `categories`
+  ADD PRIMARY KEY (`id_category`);
+
+--
 -- Индексы таблицы `images`
 --
 ALTER TABLE `images`
@@ -301,6 +327,12 @@ ALTER TABLE `cart`
 --
 ALTER TABLE `catalog`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT для таблицы `categories`
+--
+ALTER TABLE `categories`
+  MODIFY `id_category` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT для таблицы `images`
